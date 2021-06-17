@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Valider ma commande{% endblock %}
+{% block body %}
+    <div class="container">
+        <h1>Je passe ma commande</h1>
+        <p>Choisissez vos préférences avant de passez votre commande</p>
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+                <p>Recap du panier </p>
+                <div class="table-responsive-md">
+                    <table class="table table-hover text-center">
+                        {% set total= null %}
+                        {% if app.user.client_categorie_id.categorieCoefficientClient %}
+                            {% set coeff = app.user.client_categorie_id.categorieCoefficientClient %}
+                        {% else %}
+                             {% set coeff = 2 %}
+                        {% endif %}
+                        {% set tva = panier.donnees.tvaUnitaire %}
+                        {% for produit in panier.produits %}
+                            <tr >
+                                <td class="product-thumbnail"><a href="{{ path('produit_show', {'produitId' : produit.produit.produitId}) }}"><img height="100px" src="{{ asset('img/PRODUITS/')}}{{ produit.produit.produitPhoto }}" alt="{{ produit.produit.produitLibelle }}"></a></td>
+                                <td class="product-name" data-title="Product"><a href="#">{{ produit.produit.produitLibelle }}</a></td>
+                                <td class="product-quantity" data-title="Quantity">{{ produit.quantite }} x </td>
+                                <td class="product-price" data-title="Price">{{ (produit.produit.produitPrixHt/100 * coeff*tva)+(produit.produit.produitPrixHt/100 * coeff)|number_format(2) }} €</td>
+                                <td class="product-subtotal" data-title="Total">{{ ((produit.produit.produitPrixHt/100 * produit.quantite*tva* coeff)+(produit.produit.produitPrixHt/100 * produit.quantite *  coeff))|number_format(2)}} €</td>
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                            <td class="cart_total_label">Total TTC</td>
+                            <td class="cart_total_label"></td>
+                            <td class="cart_total_label"></td>
+                            <td class="cart_total_label"></td>
+                            <td class="cart_total_amount"><strong>{{ (panier.donnees.soustotalTTC* coeff)|number_format(2)}} €</strong></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-6">
+                {% set formHtml %}
+                    {{ form_start(form, {action:path('recap_commande')}) }}
+                     {% if app.user.clientAdresses | length > 0 %}
+                         <div class="form-group row">
+                        <div class="col-6 pl-0">
+                            {{ form_label(form.adresseLiv, 'Votre adresse de livraison') }}
+                            {{ form_widget(form.adresseLiv) }}
+                            {{ form_help(form.adresseLiv) }}
+                        </div>
+                        <div id="cli_conf_password" class="col-6 pl-0">
+                            {{ form_label(form.adresseFact, 'Votre adresse de Facturation') }}
+                            {{ form_widget(form.adresseFact) }}
+                            {{ form_help(form.adresseFact) }}
+                        </div>
+                    </div>
+                     {% endif %}
+                        <a href="{{ path('adresse_new') }}">Ajouter une adresse</a>
+                    {{ form_end(form) }}
+                {% endset %}
+                {{ formHtml|replace({'[br]' : "<br/>"})|raw }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

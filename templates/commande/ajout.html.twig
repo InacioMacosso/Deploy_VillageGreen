@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Payer ma commande{% endblock %}
+{% block javascript %}
+    <script src="https://js.stripe.com/v3/"></script>
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <h1>Recapitulatif</h1>
+        <p>Vérifiez vos informations avant le payement</p>
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+                <p><strong>Mon adresse de livraison</strong></p>
+                {{ adresseLiv.adresseNumeroRue }}<br>
+                {{ adresseLiv.adresseCodepostal }}, {{ adresseLiv.adresseVille }} - {{ adresseLiv.adressePays }}<br>
+            </div>
+            <div class="col-md-6">
+                <p><strong>Ma commande</strong></p>
+                <div class="table-responsive-md">
+                    <table class="table table-hover text-center">
+                        {% set total= null %}
+                        {% set coeff = app.user.client_categorie_id.categorieCoefficientClient %}
+                        {% set tva = panier.donnees.tvaUnitaire %}
+                        {% for produit in panier.produits %}
+                            <tr >
+                                <td class="product-thumbnail"><a href="{{ path('produit_show', {'produitId' : produit.produit.produitId}) }}"><img height="100px" src="{{ asset('img/PRODUITS/')}}{{ produit.produit.produitPhoto }}" alt="{{ produit.produit.produitLibelle }}"></a></td>
+                                <td class="product-name" data-title="Product"><a href="#">{{ produit.produit.produitLibelle }}</a></td>
+                                <td class="product-quantity" data-title="Quantity">{{ produit.quantite }} x </td>
+                                <td class="product-price" data-title="Price">{{ ((produit.produit.produitPrixHt/100 * tva)+(produit.produit.produitPrixHt/100 )* coeff)|number_format(2) }} €</td>
+                                <td class="product-subtotal" data-title="Total">{{ (((produit.produit.produitPrixHt/100 * produit.quantite*tva)+(produit.produit.produitPrixHt/100 * produit.quantite ))*  coeff)|number_format(2)}} €</td>
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                            <td class="cart_total_label">Total TTC</td>
+                            <td class="cart_total_label"></td>
+                            <td class="cart_total_label"></td>
+                            <td class="cart_total_label"></td>
+                            <td class="cart_total_amount"><strong>{{ (panier.donnees.soustotalTTC* coeff)|number_format(2)}} €</strong></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <a id="checkout-button" class="btn btn-block btn-success" >Payer | {{ (panier.donnees.soustotalTTC* coeff)|number_format(2)}} €</a>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript">
+        var stripe = Stripe("pk_test_51IhLzyCAmWQ2uEsc3wo3ew98ajbk1PD04CQIRMWjwtWLzQHYtN2hCDwVLtyO11Kj4OEMiBr9Fq1TCJkdpVxge42V00SJpYTQNg");
+        var checkoutButton = document.getElementById("checkout-button");
+        checkoutButton.addEventListener("click", function () {
+            fetch("/commande/create-session/{{ reference }}", {
+                method: "POST",
+            })
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (session) {
+                    if (session.error == 'commande'){
+                        window.location.replace('{{ path('commande') }}')
+                    }else {
+                        return stripe.redirectToCheckout({ sessionId: session.id });
+                    }
+                })
+                .then(function (result) {
+                    if (result.error) {
+                        alert(result.error.message);
+                    }
+                })
+                .catch(function (error) {
+                    console.error("Error:", error);
+                });
+        });
+    </script>
+{% endblock %}

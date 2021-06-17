@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+{% block title %}Mon Panier{% endblock %}
+{% block body %}
+
+    <div class="section p-0">
+        <div class="container">
+            <h1>Mon Panier</h1>
+            <p>Retrouver l'ensemble des produits que vous avez ajouté à votre panier</p>
+            <hr>
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive shop_cart_table">
+                        <table class="table">
+                            <thead>
+                            <tr class="table-active">
+                                <th class="product-quantity"></th>
+                                <th class="product-thumbnail">&nbsp;</th>
+                                <th class="product-name">Produit</th>
+                                <th class="product-price">Prixt HT</th>
+                                <th class="product-quantity">Quantité</th>
+                                <th class="product-subtotal">Total HT</th>
+                                <th class="product-subtotal">TVA (20%)</th>
+                                <th class="product-subtotal">Total TTC</th>
+                                <th class="product-remove">&nbsp;</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% set ligne =1 %}
+                            {% if app.user %}
+                                {% set coeff = app.user.client_categorie_id.categorieCoefficientClient %}
+                            {% else %}
+                                {% set coeff = 2.5 %}
+                            {% endif %}
+                            {% set tva = panier.donnees.tvaUnitaire %}
+                            {% for produit in panier.produits %}
+                            <tr>
+                                <td class="product-quantity" data-title="Quantity">{{ ligne }}</td>
+                                <td class="product-thumbnail"><a href="#"><img height="100px" src="{{ asset('img/PRODUITS/')}}{{ produit.produit.produitPhoto }}" alt="{{ produit.produit.produitLibelle }}"></a></td>
+                                <td class="product-name" data-title="Product"><a href="{{ path('produit_show', {'produitId' : produit.produit.produitId}) }}">{{ produit.produit.produitLibelle }}</a></td>
+                                <td class="product-price" data-title="Price">{{ (produit.produit.produitPrixHt/100* coeff)|number_format(2) }} €</td>
+                                <td class="product-quantity" data-title="Quantity"><div class="quantity">
+                                        <a href="{{ path('reduir_from_panier', {'produitId': produit.produit.produitId}) }}"> <input type="button" value="-" class="minus"></a>
+                                        <input type="text" name="quantity" value="{{ produit.quantite }}" title="Qty" class="qty" size="4">
+                                        <a href="{{ path('add_to_panier', {'produitId': produit.produit.produitId}) }}"> <input type="button" value="+" class="plus"></a>
+
+                                    </div></td>
+                                <td class="product-subtotal" data-title="Total">{{ (produit.produit.produitPrixHt/100 * produit.quantite *  coeff)|number_format(2)}} €</td>
+                                <td class="product-subtotal" data-title="Total">{{ (produit.produit.produitPrixHt/100 * produit.quantite*tva* coeff)|number_format(2)}} €</td>
+                                <td class="product-subtotal" data-title="Total">{{ ((produit.produit.produitPrixHt/100 * produit.quantite*tva* coeff)+(produit.produit.produitPrixHt/100 * produit.quantite *  coeff))|number_format(2)}} €</td>
+                                <td class="product-remove" data-title="Remove"><a href="{{ path('delete_to_panier', {'produitId': produit.produit.produitId}) }}">
+                                        <img src="{{ asset('img/ICONS/bin.png') }}" height="24px" alt="Suprimer mon produit">
+                                    </a>
+                                </td>
+                            </tr>
+                                    {% set ligne = ligne + 1 %}
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="medium_divider"></div>
+                    <div class="divider center_icon"><i class="ti-shopping-cart-full"></i></div>
+                    <div class="medium_divider"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+
+                </div>
+                <div class="col-md-6">
+                    <div class="border p-3 p-md-4">
+                        <div class="heading_s1 mb-3">
+                            <h6>PANIER</h6>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <td class="cart_total_label">Sous Total HT</td>
+                                    <td class="cart_total_amount">{{ (panier.donnees.sousTotal * coeff)|number_format(2)}} €</td>
+                                </tr>
+                                <tr>
+                                    <td class="cart_total_label">TVA 20%</td>
+                                    <td class="cart_total_amount">{{ (panier.donnees.tva * coeff)|number_format(2)}} €</td>
+                                </tr>
+                                <tr>
+                                    <td class="cart_total_label">Total TTC</td>
+                                    <td class="cart_total_amount"><strong>{{ (panier.donnees.soustotalTTC* coeff)|number_format(2)}} €</strong></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <a href="{{ path('commande') }}" class="btn btn-success btn-block mt-3">Valider {{ (panier.donnees.soustotalTTC*coeff)|number_format(2) }} €</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+

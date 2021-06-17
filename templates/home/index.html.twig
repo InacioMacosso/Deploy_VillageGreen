@@ -1,0 +1,100 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Village Green{% endblock %}
+
+{% block body %}
+    <div class="container p-0" id="corps_index">
+        <div class="row ml-5 mr-4">
+            <div class="col-9">
+                <img src="img/BODY/pub_guitare.png" id="guitare" alt="guitare" class="img-fluid">
+            </div>
+            <div class="col-3 " id="promo">
+                <img src="img/BODY/banniere_droite.png" alt="banniere_droite" class="img-fluid">
+            </div>
+        </div>
+
+        <div class="row  mt-3">
+            <div class="col-12">
+                <img src="img/BODY/banniere_centre.png"id="centre" alt="banniere_centre">
+            </div>
+        </div>
+
+        <h4 class="ml-3 mt-2 mb-2">Nos catégories</h4>
+
+        <div class="row m-0 p-0" id="lignephoto">
+
+            <div class="col p-0 "><img src="img/BODY/CATEGORIES_guitare.png"
+                                            onmouseover="this.src='img/BODY/CATEGORIES_ROLLOVER_guitare.png'"
+                                            onmouseout="this.src='img/BODY/CATEGORIES_guitare.png'"
+                                            class="img-fluid" id="imgguit" alt="imgguit" ></div>
+            <div class="col p-0"><img src="img/BODY/CATEGORIES_batterie.png"
+                                           onmouseover="this.src='img/BODY/CATEGORIES_ROLLOVER_batterie.png'"
+                                           onmouseout="this.src='img/BODY/CATEGORIES_batterie.png'"
+                                           class="img-fluid" id="imgbat" alt="imgbat"></div>
+            <div class="col p-0"><img src="img/BODY/CATEGORIES_piano.png"
+                                           onmouseover="this.src='img/BODY/CATEGORIESpiano.png'"
+                                           onmouseout="this.src='img/BODY/CATEGORIES_piano.png'"
+                                           class="img-fluid" id="imgpia" alt="imgpia"></div>
+            <div class="col  p-0"><img src="img/BODY/CATEGORIES_micro.png"
+                                            onmouseover="this.src='img/BODY/CATEGORIES_ROLLOVER_micro.png'"
+                                            onmouseout="this.src='img/BODY/CATEGORIES_micro.png'"
+                                            class="img-fluid" id="imgmic" alt="imgmic"></div>
+        </div>
+
+        <div class="row m-0 p-0" id="lignephoto">
+
+            <div class="col p-0"><img src="img/BODY/CATEGORIES_sono.png"
+                                           onmouseover="this.src='img/BODY/CATEGORIES_ROLLOVER_sono.png'"
+                                           onmouseout="this.src='img/BODY/CATEGORIES_sono.png'"
+                                           class="img-fluid" alt="sono"></div>
+            <div class="col p-0"><img src="img/BODY/CATEGORIES_cases.png"
+                                           onmouseover="this.src='img/BODY/CATEGORIES_ROLLOVER_cases.png'"
+                                           onmouseout="this.src='img/BODY/CATEGORIES_cases.png'"
+                                           class="img-fluid" alt="cases"></div>
+            <div class="col p-0"><img src="img/BODY/CATEGORIES_cable.png"
+                                           onmouseover="this.src='img/BODY/CATEGORIES_ROLLOVER_cables.png'"
+                                           onmouseout="this.src='img/BODY/CATEGORIES_cable.png'"
+                                           class="img-fluid" alt="cable"></div>
+            <div class="col p-0 "><img src="img/BODY/CATEGORIES_saxo1.png"
+                                            onmouseover="this.src='img/BODY/CATEGORIES_ROLLOVER_saxo.png'"
+                                            onmouseout="this.src='img/BODY/CATEGORIES_saxo1.png'"
+                                            class="img-fluid" id="img_saxo" alt="saxo"></div>
+
+        </div>
+
+        <div class="row m-0 mb-2" id="rowb">
+            <div class="col-sm-6 m-0 pr-1">
+                <h4>Nos meilleures ventes</h4>
+                <div class="row ml-0">
+                    <div class="col pr-2 " id="img2">
+                        <img src="img/BODY/TOP_VENTES_guitare.png "
+                             onmouseover="this.src='img/BODY/ROLL_OVER_guitare.png'"
+                             onmouseout="this.src='img/BODY/TOP_VENTES_guitare.png' "
+                             class="img-fluid" alt="guitare">
+                    </div>
+
+                    <div class="col pr-2" id="img3">
+                        <img src="img/BODY/TOP_VENTES_saxo.png"
+                             onmouseover="this.src='img/BODY/TOP_VENTES_ROLLOVER_saxo.png'"
+                             onmouseout="this.src='img/BODY/TOP_VENTES_saxo.png'"
+                             class="img-fluid" alt="saxo">
+                    </div>
+
+                    <div class="col pr-2" id="img4">
+                        <img src="img/BODY/TOP_VENTES_piano.png"
+                             onmouseover="this.src='img/BODY/TOP_VENTES_ROLLOVER_piano.png'"
+                             onmouseout="this.src='img/BODY/TOP_VENTES_piano.png'"
+                             class="img-fluid" alt="piano">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 pr-2" id="img9">
+                <h4>Nos partenaires</h4>
+                <img src="img/BODY/partenaires_4_logos.png"  class="img-fluid" alt="partenaires">
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

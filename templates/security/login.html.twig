@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+    <div class="login_register_wrap section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-6 col-md-10">
+                    <div class="login_wrap">
+                        <div class="padding_eight_all bg-white">
+                            <div class="heading_s1">
+                                <h3>Login</h3>
+                            </div>
+                            <form method="post">
+                                {% if error %}
+                                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                                {% endif %}
+
+                                {% if app.user %}
+                                    <div class="mb-3">
+                                        Vous êtes connecté en tant que {{ app.user.username }}, <a href="{{ path('app_logout') }}">Se déconnecter</a>
+                                    </div>
+                                {% endif %}
+                                <label for="inputClientEmail">Email</label>
+                                <input type="email" value="{{ last_username }}" name="clientEmail" id="inputClientEmail" class="form-control" required autofocus>
+                                <label for="inputPassword">Password</label>
+                                <input type="password" name="password" id="inputPassword" class="form-control" required>
+                                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                                {% if is_granted('ROLE_USER') %}
+                                    <a type="button" class="btn btn-danger mt-3 mb-3" href="{{ path('app_logout') }}">Se déconnecter</a>
+                                {% else %}
+                                    <button type="submit" class="btn btn-primary mt-3 mb-3"> Se connecter </button>
+                                    <div class="mb-3">
+                                        <a href="{{ path('app_forgot_password_request') }}">Mot de pass oublier</a>
+                                    </div>
+                                    <hr>
+                                    <div class="mb-3">
+                                        <p class="text-center">Ou souhaitez-vous<a href="{{ path('app_register') }}"> créer votre compte ?</a></p>
+                                    </div>
+                                {% endif %}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

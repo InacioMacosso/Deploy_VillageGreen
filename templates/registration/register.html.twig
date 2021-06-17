@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Inscription{% endblock %}
+
+{% block body %}
+    {% for flashError in app.flashes('verify_email_error') %}
+        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+    {% endfor %}
+    <h1 class="text-center mb-5">Inscription</h1>
+    <a class="btn btn-secondary" id="btn_retour4" href="{{ path('home') }}">RETOUR</a>
+
+    {{ form_start(registrationForm, {'attr' : { 'novalidate': 'novalidate'}}) }}
+    <div class="col-12">
+        <div class="col-12">
+            <div class="form-group row">
+                <div class="col-2 pl-0">
+                    {{ form_label(registrationForm.clientEmail) }}
+                </div>
+                <div class="col-4 pl-0">
+                    {{ form_widget(registrationForm.clientEmail) }}
+                    {{ form_help(registrationForm.clientEmail) }}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 mr-3">
+            <div class="form-group row">
+                <div id="cli_password" class="col-2 pl-0">
+                    {{ form_label(registrationForm.clientPassword.first) }}
+                </div>
+                <div class="col-4 pl-0">
+                    {{ form_widget(registrationForm.clientPassword.first) }}
+                    {{ form_help(registrationForm.clientPassword.first) }}
+                </div>
+                <div id="cli_conf_password" class="col-2 pl-0">
+                    {{ form_label(registrationForm.clientPassword.second) }}
+                </div>
+                <div class="col-4">
+                    {{ form_widget(registrationForm.clientPassword.second) }}
+                    {{ form_help(registrationForm.clientPassword.second) }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 mt-5 mb-5" id="titre">
+        <h2>Vos données</h2>
+    </div>
+
+    <div class="col-12 ml-3 pr-0">
+        <div class="form-group row">
+            <div class="col-6 pt-3 ">
+                <div class="row">
+                    <div class="col-4 pl-0">
+                        {{ form_label(registrationForm.clientNom) }}
+                    </div>
+                    <div class="col-8 pl-0 mb-2">
+                        {{ form_widget(registrationForm.clientNom) }}
+                        {{ form_help(registrationForm.clientNom) }}
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-4 pl-0">
+                        {{ form_label(registrationForm.clientPrenom) }}
+                    </div>
+                    <div class="col-8 pl-0 mb-2">
+                        {{ form_widget(registrationForm.clientPrenom) }}
+                        {{ form_help(registrationForm.clientPrenom) }}
+                    </div>
+                </div>
+                <div class="col-12 mt-3 pl-0 mb-3">
+                    {{ form_widget(registrationForm.agreeTerms) }}
+                    <a class="" href="{{ path('cgu_condition') }}" target="_blank">Lire les conditions</a>
+                </div>
+                <div class="col-12 mt-3 pl-0 mb-3 text-right">
+                    <button class="btn btn-success">{{ button_label|default('Valider') }}</button>
+                </div>
+            </div>
+            <div class="col-6 mt-4 text-center">
+                <img id="commandes_sms" src=" {{ asset('img/BODY/ESPACE CLIENT/cadre_numero.png') }}" alt="commande_sms">
+            </div>
+        </div>
+    </div>
+
+    {{ form_end(registrationForm) }}
+{% endblock %}

@@ -1,0 +1,582 @@
+/**************************************************** BASE.HTML *****************************************************/
+body
+{
+    background-size: 100%;
+    background-attachment: fixed;
+    background-image: url('../img/BACKGROUND/background_village.png') !important;
+}
+
+header{
+    background-image: url('../img/HEADER/3_bandes.png');
+}
+
+#corps
+{
+    background-color: #e8e9ea;
+}
+
+#navbar
+{
+    background-repeat: no-repeat;
+    max-width: 100%;
+}
+
+#nav1
+{
+    float: right;
+    text-align: right;
+}
+/*
+#nav2
+{
+    font-size: 14pt;
+}
+*/
+#nav3
+{
+    font-size: 13pt;
+}
+
+#cliquez
+{
+    float: left;
+}
+
+#guitare
+{
+    width: 100%;
+    height: 100%;
+}
+
+#promo
+{
+    float: right;
+}
+
+#centre
+{
+    width: 100%;
+}
+
+#img2, #img3, #img4
+{
+    width: 100%;
+    height: auto;
+    padding: 1px;
+}
+
+#imgguit
+{
+    padding: 1px;
+}
+
+#img_saxo
+{
+    width: 100%;
+    height: auto;
+}
+
+#img9
+{
+    width: 100%;
+    height: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#rowb
+{
+    height: auto;
+}
+
+h2
+{
+    text-align: center;
+}
+
+#produitDropdown{
+    margin-top: 8px;
+}
+
+.section {
+    padding: 100px 0;
+    position:relative;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+.grid {
+    position: relative;
+    margin: 0 auto;
+}
+
+#bouton_deconnexion
+{
+    float :right;
+    margin-top: -7px;
+}
+
+/*********************************************************** HOME/INDEX.HTML ********************************************************/
+
+#corps_index {
+    background-color: #e8e9ea;
+}
+
+/****************************************************************** PRODUIT/INDEX.HTML *************************************************/
+
+.produitCard{
+    height: 515px;
+    width: 350px;
+}
+
+.produitCard-img-top{
+    width: 100%;
+    height: 30vh;
+    object-fit: contain;
+}
+
+/****************************************************************** PRODUIT/_FORM.HTML *************************************************/
+
+#btn_ajouter, #btn_retour{
+    margin-bottom: 20px;
+}
+
+#btn_supprimer{
+    margin-top: -60px;
+}
+
+/****************************************************************** PRODUIT/SHOW.HTML *************************************************/
+
+#btn_modif, #btn_retour2{
+    margin-bottom: 20px;
+}
+
+#img_show{
+    width: 100%;
+    height: 30vh;
+    object-fit: contain;
+    margin-top: 10px;
+}
+
+/****************************************************************** CLIENT/FORM.HTML *************************************************/
+
+#commandes_sms
+{
+    width: 50%;
+}
+
+#cli_password, #cli_conf_password
+{
+    margin-top: -8px;
+}
+/****************************************************************** CLIENT/EDIT.HTML *************************************************/
+
+#btn_supprimer_client
+{
+    margin-top: -25px;
+    margin-bottom: 20px;
+    margin-left: 212px;
+}
+
+#btn_retour5
+{
+    margin-top: -150px;
+    margin-left: 10px;
+}
+
+/****************************************************************** CLIENT/INDEX.HTML *************************************************/
+
+#bouton_create
+{
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+/****************************************************************** CLIENT/SHOW.HTML *************************************************/
+
+#btn_retour3
+{
+    margin-bottom: 20px;
+}
+
+#btn_modification2
+{
+    margin-bottom: 20px;
+}
+
+#btn_suppr
+{
+    margin-top: -35px;
+    margin-bottom: 20px;
+    margin-right: -30px;
+}
+
+#fiche_client
+{
+    margin-top: -40px;
+    padding-bottom: 40px;
+}
+
+/****************************************************************** CLIENT/NEW.HTML *************************************************/
+
+#btn_retour4
+{
+    margin-top: -150px;
+    margin-left: 10px;
+}
+
+/***********************************************************Compte*********************************************/
+.dashboard_content {
+    margin: 0;
+}
+.dashboard_content .card-header {
+    background-color: transparent;
+    border-color: #f0f0f0;
+}
+.dashboard_content .card-header * {
+    margin: 0;
+}
+.dashboard_content .card {
+    border-radius: 0;
+    border: 0;
+    box-shadow: 0 0px 4px 0 #e9e9e9;
+}
+.dashboard_content .card-body p:last-child {
+    margin: 0;
+}
+.dashboard_content .table {
+    margin: 0;
+}
+.dashboard_content .table thead th {
+    border: 0;
+    padding-top: 0;
+    font-weight: 600;
+}
+.dashboard_content .table tbody tr:last-child td {
+    padding-bottom: 0;
+}
+.dashboard_content .table tbody tr td {
+    vertical-align: middle;
+    white-space: nowrap;
+}
+.dashboard_content label {
+    color: #333;
+}
+.dashboard_content label .required {
+    color: #ff0000;
+}
+
+.tab-content {
+    margin-bottom: 25px;
+    padding-bottom: 25px;
+}
+
+/*Title Css*/
+.heading_s1 {
+    margin-bottom: 25px;
+}
+.heading_s1 h1, .heading_s1 h2, .heading_s1 h3, .heading_s1 h4, .heading_s1 h5, .heading_s1 h6 {
+    font-weight: 700;
+    margin: 0;
+    text-transform: capitalize;
+}
+
+/******************** LOGIN & REGISTER ************************/
+.padding_eight_all {
+    padding: 8%;
+}
+.login_wrap {
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.login_register_wrap {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-align: center;
+    align-items: center;
+    position: relative;
+}
+.login_footer {
+    margin-bottom: 20px;
+    margin-top: 5px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    width: 100%;
+}
+.login_footer a {
+    color: #687188;
+}
+.different_login {
+    text-align: center;
+    position: relative;
+    margin: 20px 0;
+}
+.different_login span {
+    background-color: #fff;
+    padding: 0 15px;
+    position: relative;
+    text-transform: uppercase;
+}
+.different_login::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    right: 0;
+    border-top: 1px solid #ddd;
+    -moz-transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.btn-login li {
+    margin: 0px 5px 0;
+    display: inline-block;
+}
+.btn-login li a {
+    border-radius: 5px;
+    padding: 10px 20px;
+    color: #fff;
+    display: block;
+}
+.btn-login li a i {
+    margin-right: 10px;
+    font-size: 18px;
+    margin-left: 0;
+}
+.cs_wrap {
+    min-height: 100vh;
+    position: relative;
+    padding: 30px 0;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+.countdown_time {
+    display: table;
+    width: 100%;
+}
+.countdown_time .countdown_box {
+    float: left;
+    width: 25%;
+    font-family: 'Roboto';
+    padding: 0 15px;
+}
+.countdown-wrap {
+    display: inline-block;
+    text-align: center;
+}
+.countdown_time .cd_text {
+    display: block;
+}
+.countdown_box .countdown {
+    color: #292b2c;
+    font-size: 40px;
+}
+.countdown_white .countdown_box .countdown, .countdown_white .countdown_box .cd_text {
+    color: #fff;
+}
+.countdown_style1 .countdown_box {
+    position: relative;
+    text-align: center;
+}
+.countdown_style1 .countdown_box::before {
+    content: ":";
+    font-size: 40px;
+    font-weight: bold;
+    color: #000;
+    position: absolute;
+    right: -6px;
+}
+.countdown_style1.countdown_white .countdown_box::before {
+    color: #fff;
+}
+.countdown_style1 .countdown_box:last-child:before {
+    content: normal;
+}
+.cs_logo {
+    margin-bottom: 30px;
+    display: block;
+}
+.cs_title {
+    line-height: 44px;
+    margin-bottom: 20px;
+}
+.cs_content .countdown_time,
+.cs_content .newsletter_form {
+    margin-bottom: 30px;
+}
+.countdown_style2,
+.countdown_style3 {
+    margin-left: -15px;
+    margin-right: -15px;
+    width: auto;
+    display: -ms-flexbox;
+    display: flex;
+}
+.countdown_style2 .countdown_box .countdown-wrap {
+    text-align: center;
+    border: 1px solid #ddd;
+    width: 100%;
+    padding: 10px;
+}
+.countdown_style3 .countdown-wrap {
+    width: 100%;
+    background-color: #fff;
+    padding: 15px;
+    box-shadow: 0 0 5px rgba(0,0,0,0.03);
+}
+.countdown_time.countdown_style4 {
+    margin: 0 -2px;
+    width: auto;
+    display: block;
+}
+.countdown_time.countdown_style4 .countdown_box {
+    padding: 0 2px;
+}
+.countdown_style4 .countdown_box .countdown-wrap {
+    text-align: center;
+    background-color: #f2f2f2;
+    width: 100%;
+    padding: 10px;
+}
+
+/************************************************* Boutons**************************************************************/
+.btn-border-fill {
+    border: 1px solid #13AA97;
+    color: #13AA97;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+.btn-border-fill::before,
+.btn-border-fill::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #13AA97;
+    z-index: -1;
+    transition: all 0.3s ease-in-out;
+    width: 0;
+}
+.btn-border-fill::after {
+    right: 0;
+    left: auto;
+}
+.btn-border-fill:hover:before,
+.btn-border-fill:hover:after {
+    width: 50%;
+}
+.btn-border-fill:hover {
+    color: #fff !important;
+}
+/****************************************************************Panier*********************************************************************/
+.shop_cart_table th, .shop_cart_table td,
+.wishlist_table th, .wishlist_table td {
+    vertical-align: middle;
+    text-align: center;
+}
+.shop_cart_table th.product-name, .shop_cart_table td.product-name,
+.wishlist_table th.product-name, .wishlist_table td.product-name {
+    text-align: left;
+    text-transform: capitalize;
+}
+.shop_cart_table .quantity {
+    margin: 0 auto;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.product-thumbnail img {
+    max-width: 100px;
+}
+
+.price {
+    color: #E439A1;
+    font-weight: 600;
+}
+.product_price del {
+    font-size: 14px;
+    margin-right: 5px;
+    margin-left: 3px;
+}
+.product-price del {
+    margin-left: 5px;
+    color: #919191;
+}
+
+.product_price {
+    margin-bottom: 5px;
+}
+
+.cart-product-quantity {
+    margin: 7px 10px 7px 0;
+    display: table;
+}
+.quantity {
+    display: table;
+}
+
+.product-qty {
+    font-weight: 600;
+}
+.product-subtotal {
+    font-weight: 600;
+}
+
+.product-remove a i {
+    height: 30px;
+    width: 30px;
+    color: #292b2c;
+    display: inline-block;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 100%;
+    font-size: 14px;
+}
+.product-remove a i:hover {
+    background-color: #F00;
+    color: #fff;
+}

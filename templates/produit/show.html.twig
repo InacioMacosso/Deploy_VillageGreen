@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Produit{% endblock %}
+{% block body %}
+    <div class="container">
+    <h1 class="text-center">{{ produit.produitLibelle }}</h1>
+        <img id="img_show" class="text-center" src="{{ asset('img/PRODUITS/')}}{{ produit.produitPhoto }}" alt="photo_detail">
+    <table class="table mt-3 table-bordered">
+        <tbody>
+            <tr>
+                <th>Description</th>
+                <td class="col-lg">{{ produit.produitDescription|raw }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td class="col-lg">
+                    {% if  app.user%}
+                        <!--Le prix a afficher si le client est connecté. Il est multiplier par le coefficient du client-->
+                        {{ (produit.produitPrixHt/100 * app.user.client_categorie_id.categorieCoefficientClient)|number_format(2) }}&nbsp;&euro;
+                    {% else %}
+                        <!--Le prix a afficher si le client n'est pas connecté-->
+                        {{ (produit.produitPrixHt/100 * 2.5)|number_format(2) }}&nbsp;&euro;
+                    {% endif %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a type="button" class="btn btn-secondary" id="btn_retour2" href="{{ path('produit_index') }}">Retour</a>
+
+    </div>
+{% endblock %}

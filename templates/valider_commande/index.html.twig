@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Confirmation de commande{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+        <h2>Confirmation de commande</h2>
+        <p>Bonjour <strong>{{ app.user.NomComplet }} {{ app.user.clientNom }}</strong><br>
+            Merci, nous avons bien réçue votre commande n°: <strong>{{ commande.commandeReference }}</strong><br>
+            Veillez consulter votre messagerie ({{ app.user.clientEmail }}) pour obtenir la confirmation et les détails de la livraison. <br>
+        </p>
+        <hr>
+        <p>
+        <!-- Votre commande vous sera livré par {# {{commande.cmdLivNom }}  #} à l'adresse suivante: <strong>{# {{ commande.cmdCliAdresseLiv }}, {{ commande.cmdCliCpLiv }} - {{ commande.cmdCliVilleLiv }} #}</strong>-->
+        </p>
+    </div>
+{% endblock %}

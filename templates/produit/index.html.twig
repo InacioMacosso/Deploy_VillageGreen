@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Notre catalogue{% endblock %}
+{% block body %}
+    <h1 class="text-center mb-5">Notre catalogue</h1>
+    <div class="row d-flex justify-content-center grid">
+        {% for produit in produits %}
+            <div class="card produitCard text-center mb-2 ml-2 mr-2 {{ produit.produit_sousrubrique_id }}">
+                <div class="card-header bg-white {{ produit.produit_sousrubrique_id }}">
+                    <img src="{{ asset('img/PRODUITS/')}}{{ produit.produitPhoto }}" class="card-img-top produitCard-img-top" alt="photo_produit">
+                </div>
+                <div class="card-body {{ produit.produit_sousrubrique_id }}">
+                    <h5 class="card-title">{{ produit.produitLibelle }}</h5>
+                    {% if  app.user%}
+                        <!--Le prix a afficher si le client est connecté. Il est multiplier par le coefficient du client-->
+                        <p class="card-text">{{ (produit.produitPrixHt/100 * app.user.client_categorie_id.categorieCoefficientClient)|number_format(2) }}&nbsp;&euro;</p>
+                    {% else %}
+                        <!--Le prix a afficher si le client n'est pas connecté-->
+                        <p class="card-text">{{ (produit.produitPrixHt/100 * 2.5)|number_format(2) }}&nbsp;&euro;</p>
+                        <span class="text-muted small">Ce prix peut varier en fonction de la catégorie du client. Connectez-vous ou créez un compte pour connaître le prix réel.</span>
+                    {% endif %}
+
+                </div>
+                <div class="card-footer {{ produit.produit_sousrubrique_id }}">
+                    <a href="{{ path('produit_show', {'produitId' : produit.produitId}) }}" type="button" class="btn btn-info">Détails</a>
+                    <a href="{{ path('add_to_panier', {'produitId' : produit.produitId}) }}" type="button" class="btn btn-success">Ajouter au panier</a>
+                </div>
+            </div>
+        {% else %}
+            <tr>
+                <td colspan="8">Aucun article trouvé</td>
+            </tr>
+        {% endfor %}
+    </div>
+{% endblock %}
