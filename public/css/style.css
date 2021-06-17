@@ -580,3 +580,15 @@ h2
     background-color: #F00;
     color: #fff;
 }
+
+/******************** ERROR ************************/
+.error_wrap {
+	width: 100%;
+}
+.error_txt {
+	color: #333;
+	font-size: 150px;
+	font-weight: 600;
+	margin-bottom: 20px;
+	line-height: 1;
+}

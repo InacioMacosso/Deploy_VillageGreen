@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="section">
+    <div class="error_wrap">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+                <div class="col-lg-6 col-md-10 order-lg-first">
+                    <div class="text-center">
+                        <div class="error_txt">404</div>
+                        <h5 class="mb-2 mb-sm-3">Oops! La page que vous avez demandée n'a pas été trouvée!</h5> 
+                        <p>La page que vous recherchez a été déplacée, supprimée, renommée ou n'a peut-être jamais existé.</p>
+                        
+                        <a href="{{path('home')}}" class="btn btn-primary">Retour à l'accueil</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
