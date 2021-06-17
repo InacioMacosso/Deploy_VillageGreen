@@ -43,13 +43,13 @@ class StripController extends AbstractController
                     'unit_amount' => ($produit->getDetailsCommandePrixVente()/100)*100, //Le prix du produit
                     'product_data' => [
                         'name' => $Objet_produit->getProduitLibelle(),
-                       'images' => [$YOUR_DOMAIN."/img/PRODUITS/".$Objet_produit->getProduitPhoto()], //Image du produit
+                      // 'images' => [$YOUR_DOMAIN."/public/img/PRODUITS/".$Objet_produit->getProduitPhoto()], //Image du produit
                     ],
                 ],
                 'quantity' => $produit->getDetailsCommandeQuantite() //La quantite pour chaque produit
             ];
         }
-        Stripe::setApiKey('sk_test_51IhLzyCAmWQ2uEsczqBO6gHisXaZFfdGHFqzN17vcds473gYlwef3tUp26KZ5tYQJkF0h3rT7RE4ofcOGOoT3FLx00lx7y9qJc');
+        Stripe::setApiKey($_ENV['SP_APIKEY_PRIVATE']);
         $checkout_session = Session::create([ // Création de la session
             'customer_email'=>$this->getUser()->getClientEmail(),
             'payment_method_types' => ['card'],

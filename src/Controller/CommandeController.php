@@ -89,7 +89,8 @@ class CommandeController extends AbstractController
                 'panier' => $this->panier->getFullPanier(),
                 'adresseLiv' => $adresseLiv,
                 'adresseFac' => $adresseFact,
-                'reference' => $commande->getCommandeReference()
+                'reference' => $commande->getCommandeReference(),
+                'apikeypublic' => $_ENV['SP_APIKEY_PUBLIC']
             ]);
         }
         return $this->redirectToRoute('panier');

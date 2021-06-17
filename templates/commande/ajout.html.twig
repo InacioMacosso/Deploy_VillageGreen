@@ -47,7 +47,7 @@
 {% endblock %}
 {% block javascripts %}
     <script type="text/javascript">
-        var stripe = Stripe("pk_test_51IhLzyCAmWQ2uEsc3wo3ew98ajbk1PD04CQIRMWjwtWLzQHYtN2hCDwVLtyO11Kj4OEMiBr9Fq1TCJkdpVxge42V00SJpYTQNg");
+        var stripe = Stripe("{{ apikeypublic }}");
         var checkoutButton = document.getElementById("checkout-button");
         checkoutButton.addEventListener("click", function () {
             fetch("/commande/create-session/{{ reference }}", {
